@@ -15,7 +15,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 <template>
 
     <Head title="Dashboard" />
-
     <Layout>
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>

@@ -6,6 +6,7 @@ import AppLogo from '../AppLogo.vue'
 // Menu dinamis
 const menuItems = ref([
     { title: 'Dashboards', icon: 'ti ti-smart-home', link: '/dashboard' },
+    { title: 'Users', icon: 'ti ti-users', link: '/users' },
     {
         title: 'Layouts', icon: 'ti ti-layout-sidebar', children: [
             { title: 'Collapsed menu', link: '/layouts-collapsed-menu' },
@@ -29,6 +30,7 @@ const menuItems = ref([
             }
         ]
     },
+
     { title: 'Logout', icon: 'ti ti-logout', link: 'logout' }
 ])
 
@@ -129,14 +131,14 @@ const handleMenuClick = (item: any) => {
                 <!-- Parent dengan children -->
                 <a v-if="item.children" href="javascript:void(0);" class="menu-link menu-toggle" @click.prevent>
                     <i class="menu-icon tf-icons" :class="item.icon"></i>
-                    <div>{{ item.title }}</div>
+                    <div data-i18n="{{ item.title }}">{{ item.title }}</div>
                     <div v-if="item.badge" class="badge bg-label-primary rounded-pill ms-auto">{{ item.badge }}</div>
                 </a>
 
                 <!-- Leaf menu / SPA -->
                 <Link v-else :href="item.link" class="menu-link" @click.prevent="handleMenuClick(item)">
                 <i class="menu-icon tf-icons" :class="item.icon"></i>
-                <div>{{ item.title }}</div>
+                <div data-i18n="{{ item.title }}">{{ item.title }}</div>
                 <div v-if="item.badge" class="badge bg-label-primary rounded-pill ms-auto">{{ item.badge }}</div>
                 </Link>
 
@@ -145,7 +147,7 @@ const handleMenuClick = (item: any) => {
                     <li v-for="(child, cIndex) in item.children" :key="cIndex" class="menu-item"
                         :class="{ active: child.link === currentPath }">
                         <Link :href="child.link" class="menu-link" @click.prevent="handleMenuClick(child)">
-                        <div>{{ child.title }}</div>
+                        <div data-i18n="{{ child.title }}">{{ child.title }}</div>
                         </Link>
                     </li>
                 </ul>
